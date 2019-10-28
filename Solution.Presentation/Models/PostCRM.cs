@@ -16,6 +16,7 @@ namespace Solution.Presentation.Models
         public DateTime Created { get; set; }
         public string ImageUrl { get; set; }
         public virtual User User { get; set; }
-        public int? ForumId { get; set; }
+        public ForumCRM Forum { get; set; }
+        public int RepliesCount { get; set; }
     }
 }

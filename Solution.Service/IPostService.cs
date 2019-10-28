@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Solution.Service
 {
-    interface IPostService:IService<Post>
+     public interface IPostService:IService<Post>
     {
+        IEnumerable<Post> GetFilteredPosts(string searchQuery);
+        IEnumerable<Post> GetPostsByForum(int id);
     }
 }

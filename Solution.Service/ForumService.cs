@@ -19,9 +19,17 @@ namespace Solution.Service
         {
 
         }
-       /* public Forum GetById(int IdForum)
+
+        public IEnumerable<Forum> GetAll()
         {
-            return myContext.Forums.Where(Forum=>Forum.ForumId=ForumId).
-        }*/
+            throw new NotImplementedException();
+        }
+
+
+        public Forum GetById(int IdForum)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

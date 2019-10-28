@@ -1,8 +1,10 @@
-﻿using Solution.Domain.Entities;
+﻿using Service.Pattern;
+using Solution.Domain.Entities;
 using Solution.Presentation.Models;
 using Solution.Service;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,30 +14,44 @@ namespace Solution.Presentation.Controllers
     public class ForumController : Controller
     {
         IForumService Service = null;
-        
-
+        IPostService postService = null;
+  
         public ForumController()
         {
             Service = new ForumService();
+            postService = new PostService();
         }
         // GET: Forum
         public ActionResult Index()
         {
             //return View(Service.GetMany());
-           var forums = new List<ForumCRM>();
-            foreach (Forum forumA in Service.GetMany())
-            {
-                forums.Add(new ForumCRM()
-                {
-                    ForumId=forumA.ForumId,
-                    ImageUrl=forumA.ImageUrl,
-                    Title=forumA.Title,
-                    Descripition=forumA.Descripition,
-                    Created=forumA.Created
-                });
-
+            /* var forums = new List<ForumCRM>();
+              foreach (Forum forumA in Service.GetMany())
+              {
+                  forums.Add(new ForumCRM()
+                  {
+                      ForumId=forumA.ForumId,
+                      ImageUrl=forumA.ImageUrl,
+                      Title=forumA.Title,
+                      Descripition=forumA.Descripition,
+                      Created=forumA.Created
+                  });
+               
             }
-            return View(forums);
+              return View(forums);*/
+            var forums = Service.GetMany().Select(forum => new ForumCRM
+            {
+                ForumId = forum.ForumId,
+                Title = forum.Title,
+                Descripition = forum.Descripition,
+                Created = forum.Created,
+                ImageUrl = forum.ImageUrl
+            });
+            var model = new ForumIndexModel
+            {
+                ForumList = forums
+            };
+            return View(model);
         }
 
         // GET: Forum/Details/5
@@ -108,20 +124,23 @@ namespace Solution.Presentation.Controllers
         }
 
         // GET: Forum/Delete/5
+ 
         public ActionResult Delete(int id)
-        {
-            //var forum = Forum.GetById(id);
+        {   
             return View();
         }
 
         // POST: Forum/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, ForumCRM forumCRM)
         {
-            var forum = Service.GetById(id);
-            var f = Service.D
-            Service.Delete(id);
-
+            Forum ForumAdd = new Forum();
+      
+            //Service.Delete(id);
+            Service.Commit();
+            Service.Dispose();
+           // return View();
             return RedirectToAction("Index"); 
         }
           public ActionResult Topic(int ForumId)
@@ -129,25 +148,23 @@ namespace Solution.Presentation.Controllers
             var forum = Service.GetById(ForumId);
             var posts = forum.Posts;
 
-            var postListings = posts.Select(post => new Post
+            var postListings = posts.Select(post => new PostCRM
             {
-                PostId = post.PostId,
-                //AuthorId = post.User.Id,
-               // AuthorRating = post.User.Rating,
-               // AuthorName = post.User.UserName,
-                Title = post.Title,
-                Created = post.Created,
-               // RepliesCount = post.Replies.Count(),
-                //Forum = BuildForumListing(post)
+               PostId = post.PostId,
+               Content = post.Content,
+               Created = post.Created,
+               Forum = BuildForumListing(post),
+               ImageUrl = post.ImageUrl,
+               RepliesCount = post.PostReplies.Count(),
+               Title = post.Title
             });
-
-           /* var model = new Post
+            var model = new ForumTopicModel
             {
                 Posts = postListings,
                 Forum = BuildForumListing(forum)
-            };*/
 
-            return View(posts);
+            };
+            return View(model);
         }
         private ForumCRM BuildForumListing(Post post)
         {

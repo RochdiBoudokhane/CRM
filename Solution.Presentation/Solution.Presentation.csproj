@@ -192,6 +192,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ForumIndexModel.cs" />
+    <Compile Include="Models\ForumTopicModel.cs" />
     <Compile Include="Models\SuperUserCRM.cs" />
     <Compile Include="Models\ForumCRM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -528,8 +530,9 @@
     <Content Include="Views\Forum\Topic.cshtml" />
     <Content Include="Views\Shared\_MyLayoutAdmin.cshtml" />
     <Content Include="Views\Home\IndexA.cshtml" />
-    <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Forum\Indexaa.cshtml" />
     <Content Include="Views\Forum\Delete.cshtml" />
+    <Content Include="Views\Forum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

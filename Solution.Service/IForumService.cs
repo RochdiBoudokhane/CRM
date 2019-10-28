@@ -11,5 +11,6 @@ namespace Solution.Service
     public interface IForumService:IService<Forum>
     {
         Forum GetById(int IdForum);
+        IEnumerable<Forum> GetAll();
     }
 }
