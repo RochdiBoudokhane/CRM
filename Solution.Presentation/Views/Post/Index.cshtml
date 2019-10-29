@@ -1,0 +1,16 @@
+﻿@model Solution.Presentation.Models.PostCRM
+
+<div>
+    @Model.Content
+</div>
+
+@if(Model.postReplies.Any())
+{
+    foreach(var reply in Model.postReplies)
+    {
+        <div>
+            Reply :@reply.Content
+        </div>
+    }
+}
+

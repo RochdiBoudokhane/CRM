@@ -29,5 +29,13 @@ namespace Solution.Presentation.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Solution.Domain.Entities.Forum> Fora { get; set; }
+
+        public System.Data.Entity.DbSet<Solution.Domain.Entities.Claim> Claims { get; set; }
+
+        public System.Data.Entity.DbSet<Solution.Domain.Entities.Devis> Devis { get; set; }
+
+        public System.Data.Entity.DbSet<Solution.Domain.Entities.Offer> Offers { get; set; }
     }
 }

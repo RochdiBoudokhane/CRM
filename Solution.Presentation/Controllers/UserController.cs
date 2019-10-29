@@ -67,9 +67,9 @@ namespace Solution.Presentation.Controllers
             };
             Service.Add(UserAdd);
             Service.Commit();
-            Service.Dispose();
-      //  return RedirectToAction("Index");
-            return View();
+            //Service.Dispose();
+              return RedirectToAction("Index");
+            //return View();
         }
 
         // GET: User/Edit/5

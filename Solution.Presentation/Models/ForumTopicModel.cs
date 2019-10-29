@@ -7,7 +7,7 @@ namespace Solution.Presentation.Models
 {
     public class ForumTopicModel
     {
-        public ForumCRM Forum { get; set; }
+        public ForumCRM forum { get; set; }
         public IEnumerable<PostCRM> Posts { get; set; }
     }
 }

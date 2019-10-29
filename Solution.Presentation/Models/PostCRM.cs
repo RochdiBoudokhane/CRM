@@ -18,5 +18,6 @@ namespace Solution.Presentation.Models
         public virtual User User { get; set; }
         public ForumCRM Forum { get; set; }
         public int RepliesCount { get; set; }
+        public IEnumerable<PostReplyCRM> postReplies { get; set; }
     }
 }

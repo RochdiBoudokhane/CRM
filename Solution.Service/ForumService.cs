@@ -20,16 +20,7 @@ namespace Solution.Service
 
         }
 
-        public IEnumerable<Forum> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public Forum GetById(int IdForum)
-        {
-            throw new NotImplementedException();
-        }
+       
 
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,6 +14,7 @@ namespace Solution.Presentation.Controllers
 {
     public class ForumController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         IForumService Service = null;
         IPostService postService = null;
   
@@ -24,21 +26,6 @@ namespace Solution.Presentation.Controllers
         // GET: Forum
         public ActionResult Index()
         {
-            //return View(Service.GetMany());
-            /* var forums = new List<ForumCRM>();
-              foreach (Forum forumA in Service.GetMany())
-              {
-                  forums.Add(new ForumCRM()
-                  {
-                      ForumId=forumA.ForumId,
-                      ImageUrl=forumA.ImageUrl,
-                      Title=forumA.Title,
-                      Descripition=forumA.Descripition,
-                      Created=forumA.Created
-                  });
-               
-            }
-              return View(forums);*/
             var forums = Service.GetMany().Select(forum => new ForumCRM
             {
                 ForumId = forum.ForumId,
@@ -55,9 +42,18 @@ namespace Solution.Presentation.Controllers
         }
 
         // GET: Forum/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Forum forum = Service.GetById((int)id);
+            if (forum == null)
+            {
+                return HttpNotFound();
+            }
+            return View(forum);
         }
 
         // GET: Forum/Create
@@ -70,13 +66,6 @@ namespace Solution.Presentation.Controllers
         [HttpPost]
         public ActionResult Create(ForumCRM forumCRM)
         {
-           /* var ImageUrl = "images/users/default.jpg";
-
-            if (forumCRM.ImageUpload != null)
-            {
-                var blockBlob = UploadForumImage(forumCRM.ImageUpload);
-                ImageUrl = blockBlob.Uri.AbsoluteUri;
-            }*/
             Forum ForumAdd = new Forum()
             {
                 ImageUrl = forumCRM.ImageUrl,
@@ -86,62 +75,63 @@ namespace Solution.Presentation.Controllers
             };
             Service.Add(ForumAdd);
             Service.Commit();
-            Service.Dispose();
-            return View();
+            return RedirectToAction("Index");
         }
-       /* private CloudBlockBlob UploadForumImage(IFormFile file)
-        {
-            var connectionString = _configuration.GetConnectionString("AzureStorageAccount");
-            var container = _uploadService.GetBlobContainer(connectionString, "forum-images");
-            var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
-            var filename = contentDisposition.FileName.Trim('"');
-            var blockBlob = container.GetBlockBlobReference(filename);
-            blockBlob.UploadFromStreamAsync(file.OpenReadStream()).Wait();
-
-            return blockBlob;
-        }*/
-
         // GET: Forum/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id=0)
         {
-            return View();
+            Forum forum = new Forum();
+            ForumCRM f = new ForumCRM();
+            forum = Service.GetById(id);
+            f.Title = forum.Title;
+            f.Descripition = forum.Descripition;
+            f.Created = forum.Created;
+            f.ForumId = forum.ForumId;
+            f.ImageUrl = forum.ImageUrl;
+            return View(f);
         }
 
         // POST: Forum/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ForumCRM forums)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Forum forum = new Forum();
+            ForumCRM f = new ForumCRM();
+            forum = Service.GetById(id);
+            f.Title = forum.Title;
+            f.Descripition = forum.Descripition;
+            f.Created = forum.Created;
+            f.ForumId = forum.ForumId;
+            f.ImageUrl = forum.ImageUrl;
+            Service.Update(forum);
+            Service.Commit();
+            return RedirectToAction("index");
         }
 
         // GET: Forum/Delete/5
  
         public ActionResult Delete(int id)
-        {   
-            return View();
+        {
+            Forum forum = new Forum();
+            ForumCRM f = new ForumCRM();
+            forum = Service.GetById(id);
+            f.Title = forum.Title;
+            f.Descripition = forum.Descripition;
+            f.Created = forum.Created;
+            f.ForumId = forum.ForumId;
+            f.ImageUrl = forum.ImageUrl;
+            return View(f);
         }
 
         // POST: Forum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, ForumCRM forumCRM)
+        public ActionResult Delete(int id, ForumCRM forums)
         {
-            Forum ForumAdd = new Forum();
-      
-            //Service.Delete(id);
+            Forum forum = Service.GetById((int)id);
+            Service.Delete(forum);
             Service.Commit();
-            Service.Dispose();
-           // return View();
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
         }
           public ActionResult Topic(int ForumId)
             {

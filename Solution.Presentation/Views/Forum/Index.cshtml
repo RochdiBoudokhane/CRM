@@ -8,8 +8,11 @@
         {
         <tr>
             <td>
-                <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.ForumId">
-                    <span>@forum.Title</span>
+                @forum.ImageUrl
+            </td>
+            <td>
+                <a href="" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.ForumId">
+                    @forum.Title
                 </a>
             </td>
             <td>
@@ -19,12 +22,9 @@
                 @forum.Created
             </td>
             <td>
-                @forum.ImageUrl
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id = forum.ForumId }) |
+                @Html.ActionLink("Details", "Details", new { id = forum.ForumId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = forum.ForumId })
             </td>
         </tr>
         }

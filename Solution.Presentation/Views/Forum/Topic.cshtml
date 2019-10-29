@@ -1,6 +1,12 @@
 ﻿@model Solution.Presentation.Models.ForumTopicModel
 
-<h1>Welcome to the @Model.Forum.Title Forum!</h1>
+
+@{
+    ViewBag.Title = "Topic";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h1>Welcome to the @Model.forum.Title Forum!</h1>
 
 @if (Model.Posts.Any())
 {
@@ -31,9 +37,9 @@ else
 {
     <div class="noPosts">
         <h3>
-            It looks like there are no @Model.Forum.Title posts yet. <br />
+            It looks like there are no @Model.forum.Title posts yet. <br />
             Why not
-            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.ForumId">
+            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.forum.ForumId">
                 <span> create </span>
             </a>
             one?

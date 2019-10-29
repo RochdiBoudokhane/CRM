@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Solution.Domain.Entities;
+using Solution.Presentation.Models;
+using Solution.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,37 @@ namespace Solution.Presentation.Controllers
 {
     public class PostController : Controller
     {
-        // GET: Post
-        public ActionResult Index()
+        private ApplicationDbContext db = new ApplicationDbContext();
+        IPostService postService = null;
+
+        public PostController()
         {
-            return View();
+            postService = new PostService();
+        }
+        // GET: Post
+        public ActionResult Index(int id)
+        {
+            var post = postService.GetById(id);
+            var replies = BuildPostReplies(post.PostReplies);
+
+            var model = new PostCRM
+            {
+                PostId = post.PostId,
+                Content = post.Content,
+                Created = post.Created,
+                
+            };
+            return View(model);
+        }
+
+        private IEnumerable<PostReplyCRM> BuildPostReplies(ICollection<PostReply> postReplies)
+        {
+            return postReplies.Select(PostReply => new PostReplyCRM
+            {
+                PostId = PostReply.PostId,
+                Content = PostReply.Content,
+                Created = PostReply.Created
+            });
         }
 
         // GET: Post/Details/5

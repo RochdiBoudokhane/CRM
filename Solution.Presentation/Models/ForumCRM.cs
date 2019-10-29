@@ -8,6 +8,7 @@ namespace Solution.Presentation.Models
 {
     public class ForumCRM
     {
+        [Key]
         public int ForumId { get; set; }
         public string Title { get; set; }
         public string Descripition { get; set; }
