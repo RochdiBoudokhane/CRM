@@ -13,23 +13,35 @@ namespace Solution.Presentation.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         IPostService postService = null;
+        IForumService Service = null;
 
         public PostController()
         {
             postService = new PostService();
+            Service = new ForumService();
         }
         // GET: Post
         public ActionResult Index(int id)
         {
-            var post = postService.GetById(id);
-            var replies = BuildPostReplies(post.PostReplies);
+            /* var post = postService.GetById(id);
+             var replies = BuildPostReplies(post.PostReplies);
 
-            var model = new PostCRM
+             var model = new PostCRM
+             {
+                 PostId = post.PostId,
+                 Content = post.Content,
+                 Created = post.Created,
+
+             };*/
+            var posts = postService.GetMany().Select(post => new PostCRM
             {
                 PostId = post.PostId,
-                Content = post.Content,
-                Created = post.Created,
-                
+                Title = post.Title,
+                Content = post.Content
+            });
+            var model = new PostIndexModel
+            {
+                PostList = posts
             };
             return View(model);
         }
@@ -53,24 +65,64 @@ namespace Solution.Presentation.Controllers
         // GET: Post/Create
         public ActionResult Create()
         {
+          /*  Forum forum = new Forum();
+            forum = Service.GetById(id);
+            var model = new NewPostModel
+            {
+                ForumTitle = forum.Title,
+                ForumId = forum.ForumId,
+                ForumImageUrl = forum.ImageUrl,
+                
+            };*/
             return View();
         }
 
         // POST: Post/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(NewPostModel model)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            // var post = BuildPost(model);
+            //return new Post
+            //{
+            //    Title = model.Title,
+            //    Content = model.Content,
+            //    Created = DateTime.Now
+            //}
+            /* Post PostAdd = new Post()
+             {
+                 Title = model.Title,
+                 Content = model.Content,
+                 Created = DateTime.Now,
+             };
+             Service.Add(PostCRM);
+             Service.Commit();
+             return View(model);*/
+            Post PostAdd = new Post()
             {
-                return View();
-            }
+                Title = model.Title,
+                Content = model.Content,
+                Created = DateTime.Now
+                
+                
+                
+            };
+            postService.Add(PostAdd);
+            postService.Commit();
+            return RedirectToAction("Topic");
         }
+
+        /*private Post BuildPost(NewPostModel model)
+        {
+            var forum = Service.GetById(model.ForumId);
+            return new Post
+            {
+                Title = model.Title,
+                Content = model.Content,
+                Created = DateTime.Now,
+                Forum = forum
+            };
+        }*/
 
         // GET: Post/Edit/5
         public ActionResult Edit(int id)
@@ -114,6 +166,41 @@ namespace Solution.Presentation.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Topic(int PostId)
+        {
+            var post = postService.GetById(PostId);
+            var postReplies = post.PostReplies;
+
+            var postListings = postReplies.Select( postReply=> new PostReplyCRM
+            {
+                Id = postReply.Id,    
+                Content = postReply.Content,
+                Created = postReply.Created,
+                Post = BuildPostListing(postReply),
+                
+            });
+            var model = new PostTopicModel
+            {
+                PostReplies = postListings,
+                Post = BuildPostListing(postReply)
+
+            };
+            return View(model);
+        }
+        private PostReplyCRM BuildPostListing(PostReply postReply)
+        {
+            var post = postReply.Post;
+            return BuildPostListing(post);
+        }
+        private PostReplyCRM BuildPostListing(Post post)
+        {
+            return new PostReplyCRM
+            {
+                Id = post.PostId,
+                Content = post.Content,
+                Created = post.Created
+            };
         }
     }
 }

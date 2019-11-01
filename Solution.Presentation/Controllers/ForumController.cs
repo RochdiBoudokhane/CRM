@@ -24,7 +24,7 @@ namespace Solution.Presentation.Controllers
             postService = new PostService();
         }
         // GET: Forum
-        public ActionResult Index()
+        public ActionResult Index(String searchString)
         {
             var forums = Service.GetMany().Select(forum => new ForumCRM
             {
@@ -34,11 +34,45 @@ namespace Solution.Presentation.Controllers
                 Created = forum.Created,
                 ImageUrl = forum.ImageUrl
             });
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //sans service
+                //filmDomain = filmDomain.Where(m => m.Gender.Contains(searchString)).ToList();
+                //avec service 
+                // filmDomain = Service.GetMany(m => m.Gender.Contains(searchString));
+                //avec service specifique
+               // forums = Service.GetForumByTitle(searchString);
+            }
             var model = new ForumIndexModel
             {
                 ForumList = forums
             };
             return View(model);
+           
+        }
+        public ActionResult data(String searchString)
+        {
+            var forums = Service.GetMany().Select(forum => new ForumCRM
+            {
+                ForumId = forum.ForumId,
+                Title = forum.Title,
+                Descripition = forum.Descripition,
+                Created = forum.Created,
+                ImageUrl = forum.ImageUrl
+            });
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //sans service
+                //filmDomain = filmDomain.Where(m => m.Gender.Contains(searchString)).ToList();
+                //avec service 
+                // filmDomain = Service.GetMany(m => m.Gender.Contains(searchString));
+                //avec service specifique
+                // forums = Service.GetForumByTitle(searchString);
+            }
+            List<ForumCRM> list = forums.ToList();
+           
+            return Json(new { data = list }, JsonRequestBehavior.AllowGet);
+
         }
 
         // GET: Forum/Details/5
@@ -64,17 +98,30 @@ namespace Solution.Presentation.Controllers
 
         // POST: Forum/Create
         [HttpPost]
-        public ActionResult Create(ForumCRM forumCRM)
+        public ActionResult Create(ForumCRM forumCRM, HttpPostedFileBase file)
         {
+            if (!ModelState.IsValid || file == null || file.ContentLength == 0)
+            {
+                RedirectToAction("Create");
+            }
             Forum ForumAdd = new Forum()
             {
-                ImageUrl = forumCRM.ImageUrl,
+                ImageUrl = file.FileName,
                 Title = forumCRM.Title,
                 Descripition = forumCRM.Descripition,
                 Created = forumCRM.Created,           
             };
             Service.Add(ForumAdd);
             Service.Commit();
+            var fileName = "";
+            if (file.ContentLength > 0)
+            {
+                fileName = Path.GetFileName(file.FileName);
+                var path = Path.
+                    Combine(Server.MapPath("~/Content/Upload/"),
+                    fileName);
+                file.SaveAs(path);
+            }
             return RedirectToAction("Index");
         }
         // GET: Forum/Edit/5

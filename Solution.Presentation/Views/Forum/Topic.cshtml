@@ -6,7 +6,10 @@
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-<h1>Welcome to the @Model.forum.Title Forum!</h1>
+<h1>Welcome to the @Model.Forum.Title Forum!</h1>
+
+<span id="headingBtn">
+    <a href="@Url.Action("Create", "Post", new { id =@Model.Forum.ForumId }) class="btn btn-newPost""> Create Post</a></span>
 
 @if (Model.Posts.Any())
 {
@@ -16,10 +19,10 @@
             {
                 <tr>
                     <td>
-                        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.PostId">
+                        <a href="@Url.Action("Index", "Post", new { id = post.PostId })">
                             @post.Title
                         </a>
-                    <td>
+<td>
                         @post.Content
                     </td>
                     <td>
@@ -37,10 +40,10 @@ else
 {
     <div class="noPosts">
         <h3>
-            It looks like there are no @Model.forum.Title posts yet. <br />
+            It looks like there are no @Model.Forum.Title posts yet. <br />
             Why not
-            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.forum.ForumId">
-                <span> create </span>
+            <a href="@Url.Action("Create", "Post", new { id = @Model.Forum.ForumId })">
+                create
             </a>
             one?
         </h3>

@@ -15,9 +15,9 @@ namespace Solution.Presentation.Models
         [DataType(DataType.Date)]
         public DateTime Created { get; set; }
         public string ImageUrl { get; set; }
-        public virtual User User { get; set; }
+       // public virtual User User { get; set; }
         public ForumCRM Forum { get; set; }
         public int RepliesCount { get; set; }
-        public IEnumerable<PostReplyCRM> postReplies { get; set; }
+       public IEnumerable<PostReplyCRM> postReplies { get; set; }
     }
 }

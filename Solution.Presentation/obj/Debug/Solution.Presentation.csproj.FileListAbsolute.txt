@@ -119,6 +119,7 @@ C:\Users\asus\source\repos\Solution\Solution.Presentation\obj\Debug\Solution.Pre
 C:\Users\asus\source\repos\Solution\Solution.Presentation\bin\Solution.Data.dll
 C:\Users\asus\source\repos\Solution\Solution.Presentation\bin\Solution.Data.pdb
 C:\Users\asus\source\repos\Solution\Solution.Presentation\bin\Solution.Data.dll.config
+C:\Users\asus\Desktop\CRM\Solution.Presentation\obj\Debug\Solution.Presentation.csprojAssemblyReference.cache
 C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\Solution.Presentation.dll.config
 C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\Solution.Presentation.dll
 C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\Solution.Presentation.pdb
@@ -241,7 +242,6 @@ C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\fr\System.Web.Razor.resource
 C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\fr\System.Web.WebPages.resources.dll
 C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\asus\Desktop\CRM\Solution.Presentation\bin\fr\System.Web.WebPages.Razor.resources.dll
-C:\Users\asus\Desktop\CRM\Solution.Presentation\obj\Debug\Solution.Presentation.csprojAssemblyReference.cache
 C:\Users\asus\Desktop\CRM\Solution.Presentation\obj\Debug\Solution.Presentation.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Solution.Presentation\obj\Debug\Solution.Presentation.dll
 C:\Users\asus\Desktop\CRM\Solution.Presentation\obj\Debug\Solution.Presentation.pdb

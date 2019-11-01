@@ -14,6 +14,7 @@ namespace Solution.Presentation.Models
         public string ImageUrl { get; set; }
         public virtual User User { get; set; }
         public int? PostId { get; set; }
+        public PostCRM Post { get; set; } 
        
     }
 }
