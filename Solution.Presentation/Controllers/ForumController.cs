@@ -192,7 +192,7 @@ namespace Solution.Presentation.Controllers
                Created = post.Created,
                Forum = BuildForumListing(post),
                ImageUrl = post.ImageUrl,
-               RepliesCount = post.PostReplies.Count(),
+               RepliesCount = post.Replies.Count(),
                Title = post.Title
             });
             var model = new ForumTopicModel

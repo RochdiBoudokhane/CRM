@@ -13,7 +13,7 @@ namespace Solution.Data.Configurations
         public PostReplyConfiguration()
         {
               HasOptional(r => r.Post).
-                WithMany(p => p.PostReplies).
+                WithMany(p => p.Replies).
                 HasForeignKey(r => r.PostId).
                 WillCascadeOnDelete(true);
         }

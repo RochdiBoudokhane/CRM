@@ -23,17 +23,20 @@ namespace Solution.Presentation.Controllers
         // GET: Post
         public ActionResult Index(int id)
         {
-            /* var post = postService.GetById(id);
-             var replies = BuildPostReplies(post.PostReplies);
+             var post = postService.GetById(id);
+             var replies = BuildPostReplies(post.Replies);
 
              var model = new PostCRM
              {
                  PostId = post.PostId,
+                 Title = post.Title,  
                  Content = post.Content,
                  Created = post.Created,
+                 Replies = replies
 
-             };*/
-            var posts = postService.GetMany().Select(post => new PostCRM
+             };
+            return View(model);
+           /* var posts = postService.GetMany().Select(post => new PostCRM
             {
                 PostId = post.PostId,
                 Title = post.Title,
@@ -43,12 +46,12 @@ namespace Solution.Presentation.Controllers
             {
                 PostList = posts
             };
-            return View(model);
+            return View(model);*/
         }
 
-        private IEnumerable<PostReplyCRM> BuildPostReplies(ICollection<PostReply> postReplies)
+        private IEnumerable<PostReplyCRM> BuildPostReplies(ICollection<PostReply> replies)
         {
-            return postReplies.Select(PostReply => new PostReplyCRM
+            return replies.Select(PostReply => new PostReplyCRM
             {
                 PostId = PostReply.PostId,
                 Content = PostReply.Content,
@@ -63,25 +66,28 @@ namespace Solution.Presentation.Controllers
         }
 
         // GET: Post/Create
-        public ActionResult Create()
+        public ActionResult Create(int ForumId)
         {
-          /*  Forum forum = new Forum();
-            forum = Service.GetById(id);
+            var forum = Service.GetById(ForumId);
             var model = new NewPostModel
             {
-                ForumTitle = forum.Title,
                 ForumId = forum.ForumId,
+                ForumTitle = forum.Title,
                 ForumImageUrl = forum.ImageUrl,
-                
-            };*/
-            return View();
+            };
+            return View(model);
         }
 
         // POST: Post/Create
         [HttpPost]
         public ActionResult Create(NewPostModel model)
         {
+            var post = BuildPost(model);
+            postService.Add(post);
+            return RedirectToAction("Index", "Post", post.PostId);
 
+           
+            //var post = postService.GetById(ForumId);
             // var post = BuildPost(model);
             //return new Post
             //{
@@ -98,18 +104,28 @@ namespace Solution.Presentation.Controllers
              Service.Add(PostCRM);
              Service.Commit();
              return View(model);*/
-            Post PostAdd = new Post()
+           /* Post PostAdd = new Post()
             {
                 Title = model.Title,
                 Content = model.Content,
-                Created = DateTime.Now
-                
-                
-                
+                Created = DateTime.Now             
             };
             postService.Add(PostAdd);
             postService.Commit();
-            return RedirectToAction("Topic");
+            return RedirectToAction("Topic");*/
+        }
+
+        private Post BuildPost(NewPostModel model)
+        {
+            var forum = Service.GetById(model.ForumId);
+            return new Post
+            {
+                Title = model.Title,
+                Content = model.Content,
+                Created = DateTime.Now,
+                Forum = forum
+                
+            };
         }
 
         /*private Post BuildPost(NewPostModel model)
@@ -170,20 +186,20 @@ namespace Solution.Presentation.Controllers
         public ActionResult Topic(int PostId)
         {
             var post = postService.GetById(PostId);
-            var postReplies = post.PostReplies;
+            var postReplies = post.Replies;
 
             var postListings = postReplies.Select( postReply=> new PostReplyCRM
             {
                 Id = postReply.Id,    
                 Content = postReply.Content,
                 Created = postReply.Created,
-                Post = BuildPostListing(postReply),
+             //   Post = BuildPostListing(postReply)
                 
             });
             var model = new PostTopicModel
             {
                 PostReplies = postListings,
-                Post = BuildPostListing(postReply)
+             //   Post = BuildPostListing(postReply)
 
             };
             return View(model);

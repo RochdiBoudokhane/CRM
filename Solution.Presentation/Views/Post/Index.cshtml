@@ -1,43 +1,18 @@
-﻿@model Solution.Presentation.Models.PostIndexModel
+﻿@model Solution.Presentation.Models.PostCRM
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MyLayout.cshtml";
+<h1>@Model.Title</h1>
+
+<div>
+    @Model.Content
+</div>
+
+@if(Model.Replies.Any())
+{
+    foreach(var reply in Model.Replies)
+    {
+        <div>
+            Reply :@reply.Content
+        </div>
+    }
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
- 
-@foreach (var item in Model.PostList) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RepliesCount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>

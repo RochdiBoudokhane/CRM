@@ -9,7 +9,10 @@
 <h1>Welcome to the @Model.Forum.Title Forum!</h1>
 
 <span id="headingBtn">
-    <a href="@Url.Action("Create", "Post", new { id =@Model.Forum.ForumId }) class="btn btn-newPost""> Create Post</a></span>
+    <a href="@Url.Action("Create", "Post", 
+            new { id =@Model.Forum.ForumId }) class="btn btn-newPost"">
+    Create Post</a>
+</span>
 
 @if (Model.Posts.Any())
 {
