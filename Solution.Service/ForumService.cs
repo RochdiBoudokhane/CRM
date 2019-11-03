@@ -20,7 +20,9 @@ namespace Solution.Service
 
         }
 
-       
-
+        public IEnumerable<Forum> GetForumByTitle(string title)
+        {
+            return GetMany(f => f.Title.Contains(title));
+        }
     }
 }

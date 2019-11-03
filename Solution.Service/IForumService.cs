@@ -10,6 +10,6 @@ namespace Solution.Service
 {
     public interface IForumService:IService<Forum>
     {
-        
+        IEnumerable<Forum> GetForumByTitle(String title);
     }
 }

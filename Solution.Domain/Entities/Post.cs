@@ -20,6 +20,6 @@ namespace Solution.Domain.Entities
         public int? ForumId { get; set; }
         [ForeignKey("ForumId")]
         public virtual Forum Forum { get; set; }
-        public virtual ICollection<PostReply> PostReplies { get; set; }
+        public virtual ICollection<PostReply> Replies { get; set; }
     }
 }

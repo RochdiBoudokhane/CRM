@@ -54,8 +54,7 @@ namespace Solution.Presentation.Controllers
         // POST: User/Create
         [HttpPost]
         public ActionResult Create(SimpleUserCRM SUser)
-        {
-            
+        {          
             User UserAdd = new User()
             {
                 FirstName = SUser.FirstName,

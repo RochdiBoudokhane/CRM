@@ -21,9 +21,9 @@ namespace Solution.Presentation.Controllers
             Service = new ForumService();
         }
         // GET: Post
-        public ActionResult Index(int id)
+        public ActionResult Index(int ForumId)
         {
-             var post = postService.GetById(id);
+             var post = postService.GetById(ForumId);
              var replies = BuildPostReplies(post.Replies);
 
              var model = new PostCRM
@@ -36,17 +36,6 @@ namespace Solution.Presentation.Controllers
 
              };
             return View(model);
-           /* var posts = postService.GetMany().Select(post => new PostCRM
-            {
-                PostId = post.PostId,
-                Title = post.Title,
-                Content = post.Content
-            });
-            var model = new PostIndexModel
-            {
-                PostList = posts
-            };
-            return View(model);*/
         }
 
         private IEnumerable<PostReplyCRM> BuildPostReplies(ICollection<PostReply> replies)
@@ -83,36 +72,11 @@ namespace Solution.Presentation.Controllers
         public ActionResult Create(NewPostModel model)
         {
             var post = BuildPost(model);
+            
             postService.Add(post);
-            return RedirectToAction("Index", "Post", post.PostId);
-
-           
-            //var post = postService.GetById(ForumId);
-            // var post = BuildPost(model);
-            //return new Post
-            //{
-            //    Title = model.Title,
-            //    Content = model.Content,
-            //    Created = DateTime.Now
-            //}
-            /* Post PostAdd = new Post()
-             {
-                 Title = model.Title,
-                 Content = model.Content,
-                 Created = DateTime.Now,
-             };
-             Service.Add(PostCRM);
-             Service.Commit();
-             return View(model);*/
-           /* Post PostAdd = new Post()
-            {
-                Title = model.Title,
-                Content = model.Content,
-                Created = DateTime.Now             
-            };
-            postService.Add(PostAdd);
             postService.Commit();
-            return RedirectToAction("Topic");*/
+            //return RedirectToAction("Index", "Post", post.PostId);
+            return RedirectToAction("Index");
         }
 
         private Post BuildPost(NewPostModel model)
@@ -120,26 +84,12 @@ namespace Solution.Presentation.Controllers
             var forum = Service.GetById(model.ForumId);
             return new Post
             {
+                ForumId = model.ForumId,
                 Title = model.Title,
                 Content = model.Content,
-                Created = DateTime.Now,
-                Forum = forum
-                
+                Created = DateTime.Now             
             };
         }
-
-        /*private Post BuildPost(NewPostModel model)
-        {
-            var forum = Service.GetById(model.ForumId);
-            return new Post
-            {
-                Title = model.Title,
-                Content = model.Content,
-                Created = DateTime.Now,
-                Forum = forum
-            };
-        }*/
-
         // GET: Post/Edit/5
         public ActionResult Edit(int id)
         {

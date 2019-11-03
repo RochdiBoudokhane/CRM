@@ -8,24 +8,25 @@
 
 <h1>Welcome to the @Model.Forum.Title Forum!</h1>
 
-<span id="headingBtn">
-    <a href="@Url.Action("Create", "Post", 
-            new { id =@Model.Forum.ForumId }) class="btn btn-newPost"">
-    Create Post</a>
-</span>
+
 
 @if (Model.Posts.Any())
 {
+    <span id="headingBtn">
+        <a href="@Url.Action("Create", "Post", new { ForumId = @Model.Forum.ForumId })">
+            Create Post
+        </a>
+    </span>
     <table class="table table-bordered table-hover">
         <tbody>
             @foreach (var post in Model.Posts)
             {
                 <tr>
                     <td>
-                        <a href="@Url.Action("Index", "Post", new { id = post.PostId })">
+                        <a href="@Url.Action("Index", "Post", new { ForumId = post.PostId })">
                             @post.Title
                         </a>
-<td>
+                    <td>
                         @post.Content
                     </td>
                     <td>
@@ -45,7 +46,7 @@ else
         <h3>
             It looks like there are no @Model.Forum.Title posts yet. <br />
             Why not
-            <a href="@Url.Action("Create", "Post", new { id = @Model.Forum.ForumId })">
+            <a href="@Url.Action("Create", "Post", new { ForumId = @Model.Forum.ForumId })">
                 create
             </a>
             one?
