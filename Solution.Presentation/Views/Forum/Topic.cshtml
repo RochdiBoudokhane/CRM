@@ -1,44 +1,80 @@
 ﻿@model Solution.Presentation.Models.ForumTopicModel
 
 
-@{
-    ViewBag.Title = "Topic";
-    Layout = "~/Views/Shared/_MyLayout.cshtml";
-}
-
-<h1>Welcome to the @Model.Forum.Title Forum!</h1>
-
-
-
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Posts</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Posts</a></li>
+                    <li class="breadcrumb-item active">@Model.Forum.Title</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 @if (Model.Posts.Any())
 {
-    <span id="headingBtn">
-        <a href="@Url.Action("Create", "Post", new { ForumId = @Model.Forum.ForumId })">
-            Create Post
-        </a>
-    </span>
-    <table class="table table-bordered table-hover">
-        <tbody>
-            @foreach (var post in Model.Posts)
-            {
-                <tr>
-                    <td>
-                        <a href="@Url.Action("Index", "Post", new { ForumId = post.PostId })">
-                            @post.Title
-                        </a>
-                    <td>
-                        @post.Content
-                    </td>
-                    <td>
-                        @post.Created
-                    </td>
-                    <td>
-                        @post.RepliesCount
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    
+    <div class="wishlist-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+
+                                    <th>Post Name</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Replies</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var post in Model.Posts)
+                                {
+                                <tr>
+                                    <td class="name-pr">
+                                        <a href="@Url.Action("Index", "Post", new { ForumId = post.PostId })">
+                                            @post.Title
+                                        </a>
+                                    </td>
+                                    <td class="desc-pr">
+                                        <p>
+                                            @post.Content
+                                        </p>
+                                    </td>
+                                    <td class="quantity-box"> @post.Created</td>
+                                    <td class="quantity-box">@post.RepliesCount</td>
+                                    @*<td class="add-pr">
+                                        @Html.ActionLink("Edit", "Edit", new { id = post.PostId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = post.PostId })*@
+                                    <td class="add-pr">
+                                        <a class="btn hvr-hover" href="@Url.Action("Edit", "Post", new { ForumId = post.PostId })">Update Post</a>
+                                    </td>
+                                    <td class="add-pr">
+                                        <a class="btn hvr-hover" href="@Url.Action("Delete", "Post", new { id = post.PostId })">Delete Post</a>
+                                    </td>
+                                    @*</td>*@
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <td class="add-pr">
+                            <a class="btn hvr-hover" href="@Url.Action("Create", "Post", new { ForumId = @Model.Forum.ForumId })">Create Post</a>
+                        </td>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 else
 {
@@ -53,6 +89,3 @@ else
         </h3>
     </div>
 }
-
-
-

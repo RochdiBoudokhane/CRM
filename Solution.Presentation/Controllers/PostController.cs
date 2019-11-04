@@ -37,6 +37,23 @@ namespace Solution.Presentation.Controllers
              };
             return View(model);
         }
+        public ActionResult data(int ForumId)
+        {
+            var post = postService.GetById(ForumId);
+            var replies = BuildPostReplies(post.Replies);
+
+            var model = new PostCRM
+            {
+                PostId = post.PostId,
+                Title = post.Title,
+                Content = post.Content,
+                Created = post.Created,
+                Replies = replies
+
+            };
+           // List<PostCRM> list = replies.ToList();
+            return Json(new { data = replies }, JsonRequestBehavior.AllowGet);
+        }
 
         private IEnumerable<PostReplyCRM> BuildPostReplies(ICollection<PostReply> replies)
         {
@@ -44,7 +61,7 @@ namespace Solution.Presentation.Controllers
             {
                 PostId = PostReply.PostId,
                 Content = PostReply.Content,
-                Created = PostReply.Created
+                Created = DateTime.Now
             });
         }
 
@@ -91,47 +108,53 @@ namespace Solution.Presentation.Controllers
             };
         }
         // GET: Post/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int ForumId)
         {
-            return View();
+            Post post = new Post();
+            PostCRM p = new PostCRM();
+            post = postService.GetById(ForumId);
+            p.Title = post.Title;
+            p.Content = post.Content;
+            return View(p);
         }
 
         // POST: Post/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, PostCRM postCRM )
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Post post = new Post();
+            PostCRM p = new PostCRM();
+            post = postService.GetById(id);
+            p.Title = post.Title;
+            p.Content = post.Content;
+            postService.Update(post);
+            postService.Commit();
+            return RedirectToAction("Index");
         }
 
         // GET: Post/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Post post = new Post();
+            PostCRM f = new PostCRM();
+            post = postService.GetById(id);
+            f.Title = post.Title;
+            f.Content = post.Content;
+            f.Created = post.Created;
+            f.PostId = post.PostId;
+            f.ImageUrl = post.ImageUrl;
+            return View(f);
         }
 
         // POST: Post/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, PostCRM postCRM)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Post post = postService.GetById((int)id);
+            postService.Delete(post);
+            postService.Commit();
+            return RedirectToAction("Index");
         }
         public ActionResult Topic(int PostId)
         {

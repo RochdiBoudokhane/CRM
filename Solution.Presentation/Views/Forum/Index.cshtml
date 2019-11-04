@@ -1,98 +1,60 @@
 ﻿@model Solution.Presentation.Models.ForumIndexModel
 
-<link rel="stylesheet" type="text/css" href="~/Content/css/DataTable.css" />
 
-
-<h1>Forums</h1>
-<table>
-    <tr>
-        <td>
-            <div>
-                Search by Title: @Html.TextBox("searchString")
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Forum</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item active">Wishlist</li>
+                </ul>
             </div>
-        </td>
-        <td>
-            <input type="submit" value="Search" id="submit" />
-        </td>
-    </tr>
-</table>
-<table class="table table-hover" id="forumIndexTable">
-    <tbody class="content">
-        @foreach (var forum in Model.ForumList)
-        {
-            <tr>
-                <td>
-                    @{ string path = "~/Content/Upload/" + forum.ImageUrl;}
-                    <img src="@Url.Content(path)" width="50" height="50" />
-                </td>
-                <td>
-                    <a href="@Url.Action("Topic", "Forum", new { ForumId = @forum.ForumId })">
-                        @forum.Title
-                    </a>
-                </td>
-                <td>
-                    @forum.Descripition
-                </td>
-                <td>
-                    @forum.Created
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = forum.ForumId }) |
-                    @Html.ActionLink("Details", "Details", new { id = forum.ForumId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = forum.ForumId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        </div>
+    </div>
+</div>
+<div class="wishlist-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Images</th>
+                                <th>Forum Name</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var forum in Model.ForumList)
+                            {
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        @{ string path = "~/Content/Upload/" + forum.ImageUrl;}
+                                        <img src="@Url.Content(path)" width="60" height="60" />
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="@Url.Action("Topic", "Forum", new { ForumId = @forum.ForumId })">
+                                            @forum.Title
+                                        </a>
+                                    </td>
+                                    <td class="desc-pr">
+                                        <p>
+                                            @forum.Descripition
+                                        </p>
+                                    </td>
+                                    <td class="quantity-box">@forum.Created</td>
 
-@*<table class="table table-hover" id="forumIndexTable1">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date de création</th>
-
-        </tr>
-    </thead>
-</table>*@
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src=@Url.Content("~/Scripts/JqueryDatatables.js")></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-
-            $('#forumIndexTable1').DataTable({
-                "ajax": {
-                    "url": '/Forum/data',
-                    "type": "get",
-                    "datatype": "json"
-                }, "columns":[
-                  {"data":"ImageUrl","autoWidth":true, "render": function (data) {
-                            return ' <img src="@Url.Content("~/Content/Upload/toDo.png")" width="50" height="50" />'
-                        }},
-                    {
-                        "data": "Title", "autoWidth": true, "render": function (data) {
-                            return '<a href="@Url.Action("Topic", "Forum", new { ForumId =  2})">' + data + '</a>'
-                        }
-                    },
-                    { "data": "Descripition", "autoWidth": true },
-                    { "data": "Created", "autoWidth": true, "render": function (data) {
-                            if (data === null) return "";
-
-                            var pattern = /Date([^)]+)([ )]+)/;
-                            var results = pattern.exec(data);
-                            var dt = new Date(parseFloat(results[1]));
-
-                            return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes();
-                        }
-                    }
-                    ]
-            }
-            );
-        })
-    </script>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
