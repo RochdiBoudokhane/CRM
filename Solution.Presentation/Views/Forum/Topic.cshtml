@@ -56,10 +56,10 @@
                                         @Html.ActionLink("Edit", "Edit", new { id = post.PostId }) |
                                         @Html.ActionLink("Delete", "Delete", new { id = post.PostId })*@
                                     <td class="add-pr">
-                                        <a class="btn hvr-hover" href="@Url.Action("Edit", "Post", new { ForumId = post.PostId })">Update Post</a>
+                                        <a class="btn hvr-hover" href="@Url.Action("Edit", "Post", new { PostId = post.PostId })">Update Post</a>
                                     </td>
                                     <td class="add-pr">
-                                        <a class="btn hvr-hover" href="@Url.Action("Delete", "Post", new { id = post.PostId })">Delete Post</a>
+                                        <a class="btn hvr-hover" href="@Url.Action("Delete", "Post", new { PostId = post.PostId })">Delete Post</a>
                                     </td>
                                     @*</td>*@
                                 </tr>

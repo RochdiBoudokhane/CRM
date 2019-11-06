@@ -393,7 +393,7 @@
     <Content Include="Views\Home\IndexAdmin.cshtml" />
     <Content Include="Views\Forum\Indexaa.cshtml" />
     <Content Include="Views\Forum\Details.cshtml" />
-    <Content Include="Views\Post\Indexbb.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Offers\Create.cshtml" />
     <Content Include="Views\Offers\Delete.cshtml" />
     <Content Include="Views\Offers\Details.cshtml" />
@@ -411,7 +411,7 @@
     <Content Include="Views\Forum\Topic.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\Post\Delete.cshtml" />
-    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Indexcc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
