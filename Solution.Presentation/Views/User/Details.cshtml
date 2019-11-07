@@ -1,0 +1,214 @@
+﻿@model Solution.Presentation.Models.UserVm
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MyLayoutAdmin.cshtml";
+}
+
+
+<h2 class="main-title-w3layouts mb-2 text-center">
+    <dd>
+        @Html.DisplayFor(model => model.FirstName)<span>'s Profile</span>
+    </dd>
+</h2>
+<br />
+<!--// main-heading -->
+<!-- Inbox Page -->
+<!-- Inbox topnav -->
+<nav class="inbox-nav-w3ls p-3 bg-dark text-white">
+    <div class="row">
+        <div class="inbox-topl col-6">
+            <ul class="d-flex justify-content-between">
+                <li>
+                    <a href="#" class="email-menu">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="email-type">
+
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FirstName)
+                        </dd>
+                    </a>
+                </li>
+                <li class="right">
+                    <a href="#">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="inbox-topr col-6">
+            <ul class="right d-flex justify-content-end">
+
+                <li class="mx-4">
+                    <a href="#">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </li>
+                <li class="ml-4">
+                    <a href="#">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Inbox topnav -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="index-lcontent col-xl-6">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left-strip -->
+                    <div class="inbox-side-strip-w3-agileits px-2 py-3 col-3" style=" margin-top: 30px">
+                        <ul class="text-center">
+                            <li>
+
+                                <dd>
+                                    @{ string path = "~/Content/Upload/" + @Html.DisplayFor(model => model.ImageUrl);}
+                                    <img src="@Url.Content(path)" width="100" height="130" />
+                                </dd>
+
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                    <!-- //left-strip -->
+                    <!-- right-strip -->
+
+                    <div class="email-list col-9">
+                        <ul class="collection">
+                            <li class="collection-item d-flex justify-content-between">
+                                <i class="fas fa-users text-primary align-self-center mr-3"></i>
+                                <div class="mid-cn">
+                                    <span class="email-title"> FirstName</span>
+                                    <p class="paragraph-agileits-w3layouts">
+                                        <dd>
+                                            @Html.DisplayFor(model => model.FirstName)
+                                        </dd>
+                                    </p>
+                                </div>
+                                <a href="#" class="ml-2">
+                                    <span class="badge badge-secondary bg-primary">FN</span>
+                                </a>
+                            </li>
+
+                            <li class="collection-item d-flex justify-content-between">
+                                <i class="fas fa-tag text-success mr-3"></i>
+                                <div class="mid-cn">
+                                    <span class="email-title">LastName</span>
+                                    <p class="paragraph-agileits-w3layouts">
+                                        <dd>
+                                            @Html.DisplayFor(model => model.LastName)
+                                        </dd>
+                                    </p>
+                                </div>
+                                <a href="#" class="secondary-content">
+                                    <span class="badge badge-secondary bg-success">LN</span>
+                                </a>
+                            </li>
+
+
+                            <li class="collection-item d-flex justify-content-between">
+                                <i class="fas fa-exclamation-circle text-warning mr-3"></i>
+                                <div class="mid-cn">
+                                    <span class="email-title">Email</span>
+                                    <p class="paragraph-agileits-w3layouts">
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Email)
+                                        </dd>
+                                    </p>
+                                </div>
+                                <a href="#" class="secondary-content">
+                                    <span class="badge badge-secondary bg-warning"> email </span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <!-- right-strip -->
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="index-rcontent col-xl-6 mt-xl-0 mt-3">
+            <div class="outer-w3-agile">
+                <p class="paragraph-agileits-w3layouts font-weight-bold">
+                    Pour afficher le type du client
+                    <mark>inbox</mark>
+                    <mark>
+                        projects
+                    </mark>
+                    <i class="mdi-action-star-rate yellow-text text-darken-3 right"></i>
+                </p>
+                <hr class="grey-text text-lighten-2">
+                <div class="email-content-wrap">
+                    <div class="row">
+                        <div class="col-9">
+                            <ul class="collection">
+                                <li class="collection-item selected d-flex justify-content-between">
+                                    <img src="images/profile.jpg" alt="" class="rounded-circle mr-3">
+                                    <div class="mid-cn">
+                                        <span class="email-title">Andy Brown</span>
+                                        <br>
+                                        <small class="text-primary">To me, John Doe</small>
+                                        <br>
+                                        <small class="text-primary">Yesterday</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr class="grey-text text-lighten-2">
+
+                    </div>
+                    <div class="email-content">
+                        <p class="paragraph-agileits-w3layouts">
+
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FirstName)<span>'s Picture</span>
+                            </dd>
+                        </p>
+
+
+                        <p class="paragraph-agileits-w3layouts"></p>
+                        <p class="paragraph-agileits-w3layouts">
+                            <dd>
+                                @{ string path1 = "~/Content/Upload/" + @Html.DisplayFor(model => model.ImageUrl);}
+                                <img src="@Url.Content(path)" width="140" height="140" style="margin-left: 150px;" />
+                            </dd>
+                        </p>
+                        <p>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |*@
+                            @Html.ActionLink("Back to Users List", "Index")
+                        </p>
+                    </div>
+                </div>
+                <hr>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+                </div>
+            </div>
+<!--// Inbox Page -->
