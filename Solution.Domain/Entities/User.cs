@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace Solution.Domain.Entities
 {
     public class User
     {
+        [Key]
         public int UserId { get; set; }
+
+
+        public String ImageUrl { get; set; }
 
         [Required(ErrorMessage = "Vous devez indiquer votre prénom")]
         public String FirstName { get; set; }
@@ -18,26 +20,16 @@ namespace Solution.Domain.Entities
         [Required(ErrorMessage = "Vous devez indiquer votre nom")]
         public String LastName { get; set; }
 
-       
-        public String Address { get; set; }
 
-        [MinLength(8)]
-        public int? Phone { get; set; }
-        public int? Cin { get; set; }
-        public int? Points { get; set; }
-        public int? Type { get; set; }
+        [Display(Name = "Email")]
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public String Email { get; set; }
 
-        
-        [DataType(DataType.ImageUrl)]
-        public String ImageUrl { get; set; }
-
-
-      
-        [Display(Name = "Mot de Passe")]
+        [Display(Name = "Password")]
         [Required, MinLength(6)]
         [DataType(DataType.Password)]
         public String Password { get; set; }
-
 
         [Required]
         [Display(Name = "Confirm password")]
@@ -45,18 +37,17 @@ namespace Solution.Domain.Entities
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Email")]
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        public String Email { get; set; }
 
-       /* public virtual ICollection<Claim> Claims { get; set; }
-        [ForeignKey("ClaimsFK")]
-        public virtual Claim  Claim { get; set; }
+        public int? Type { get; set; }
+        public int? Cin { get; set; }
+        public String Address { get; set; }
+        public int? Phone { get; set; }
+        public int? Points { get; set; }
 
-        public virtual ICollection<Post> Posts { get; set; }
-        [ForeignKey("PostFK")]
-        public virtual Post Post { get; set; }*/
+        public int? CodePostal { get; set; }
+        public int? NbClient { get; set; }
+        public String Document { get; set; }
+        public int? Etat { get; set; }
 
     }
 }

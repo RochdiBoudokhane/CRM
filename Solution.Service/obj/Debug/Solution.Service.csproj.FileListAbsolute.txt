@@ -31,6 +31,7 @@ C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.csprojAsse
 C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.dll
 C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.pdb
+<<<<<<< HEAD
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Service.dll
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Service.pdb
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Service.Pattern.dll
@@ -48,3 +49,21 @@ D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.csproj.CopyComplete
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.dll
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.pdb
+=======
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Service.dll
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Service.pdb
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Service.Pattern.dll
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Data.dll
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Domain.dll
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\EntityFramework.dll
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Service.Pattern.pdb
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Data.pdb
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Data.dll.config
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Domain.pdb
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\Solution.Domain.dll.config
+C:\Users\Emna\Desktop\CRM\Solution.Service\bin\Debug\EntityFramework.xml
+C:\Users\Emna\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.csprojAssemblyReference.cache
+C:\Users\Emna\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.csproj.CopyComplete
+C:\Users\Emna\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.dll
+C:\Users\Emna\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.pdb
+>>>>>>> be63022a55e0ef72941c16ba8430b17475cc33bf

@@ -24,6 +24,7 @@ C:\Users\asus\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.csprojAssemb
 C:\Users\asus\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.dll
 C:\Users\asus\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.pdb
+<<<<<<< HEAD
 D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\bin\Debug\Service.Pattern.dll
 D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\bin\Debug\Service.Pattern.pdb
 D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\bin\Debug\Solution.Data.dll
@@ -39,3 +40,19 @@ D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\obj\Debug\Service.Pattern.cs
 D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\obj\Debug\Service.Pattern.csproj.CopyComplete
 D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\obj\Debug\Service.Pattern.dll
 D:\Doc\4eme\pi dev 1\template 3\CRM\Service.Pattern\obj\Debug\Service.Pattern.pdb
+=======
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Service.Pattern.dll
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Service.Pattern.pdb
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Solution.Data.dll
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\EntityFramework.dll
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Solution.Domain.dll
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Solution.Data.pdb
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Solution.Data.dll.config
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\EntityFramework.xml
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Solution.Domain.pdb
+C:\Users\Emna\Desktop\CRM\Service.Pattern\bin\Debug\Solution.Domain.dll.config
+C:\Users\Emna\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.csprojAssemblyReference.cache
+C:\Users\Emna\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.csproj.CopyComplete
+C:\Users\Emna\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.dll
+C:\Users\Emna\Desktop\CRM\Service.Pattern\obj\Debug\Service.Pattern.pdb
+>>>>>>> be63022a55e0ef72941c16ba8430b17475cc33bf

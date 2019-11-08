@@ -88,12 +88,18 @@ namespace Solution.Presentation.Controllers
         [HttpPost]
         public ActionResult Create(NewPostModel model)
         {
+           // var forum = Service.GetById(FormId);
             var post = BuildPost(model);
 
             postService.Add(post);
             postService.Commit();
+<<<<<<< HEAD
             return RedirectToAction("Index", "Post", new {id= post.PostId });
             //return RedirectToAction("Index");
+=======
+            //return RedirectToAction("Index", "Post", new {id= post.PostId });
+            return RedirectToAction("Topic", "Forum" , new { ForumId = model.ForumId });
+>>>>>>> be63022a55e0ef72941c16ba8430b17475cc33bf
         }
 
         private Post BuildPost(NewPostModel model)
@@ -120,6 +126,7 @@ namespace Solution.Presentation.Controllers
 
         // POST: Post/Edit/5
         [HttpPost]
+<<<<<<< HEAD
         public ActionResult Edit(int PostId, PostCRM postCRM )
         {
             Post post = new Post();
@@ -130,32 +137,45 @@ namespace Solution.Presentation.Controllers
             postService.Update(post);
             postService.Commit();
             return RedirectToAction("Index");
+=======
+        public ActionResult Edit(int PostId, PostCRM p )
+        {
+            Post post = new Post();
+            post = postService.GetById(PostId);
+            post.Title = p.Title;
+            post.Content = p.Content;
+            postService.Update(post);
+            postService.Commit();
+            return RedirectToAction("Topic", "Forum", new { ForumId = p.ForumId });
+>>>>>>> be63022a55e0ef72941c16ba8430b17475cc33bf
             //return View();
         }
 
         // GET: Post/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int PostId)
         {
             Post post = new Post();
-            PostCRM f = new PostCRM();
-            post = postService.GetById(id);
-            f.Title = post.Title;
-            f.Content = post.Content;
-            f.Created = post.Created;
-            f.PostId = post.PostId;
-            f.ImageUrl = post.ImageUrl;
-            return View(f);
+            PostCRM p = new PostCRM();
+            post = postService.GetById(PostId);
+            p.Title = post.Title;
+            p.Content = post.Content;
+            p.Created = post.Created;
+            p.PostId = post.PostId;
+            p.ImageUrl = post.ImageUrl;
+            return View(p);
         }
 
         // POST: Post/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, PostCRM postCRM)
+        public ActionResult Delete(int PostId, PostCRM postCRM)
         {
-            Post post = postService.GetById((int)id);
+            Post post = postService.GetById((int)PostId);
             postService.Delete(post);
             postService.Commit();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            //return View();
+            return RedirectToAction("Topic", "Forum", new { ForumId = post.ForumId });
         }
         public ActionResult Topic(int PostId)
         {

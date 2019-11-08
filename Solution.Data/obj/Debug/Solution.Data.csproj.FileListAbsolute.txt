@@ -31,6 +31,7 @@ C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.csprojAssemblyRe
 C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.dll
 C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.pdb
+<<<<<<< HEAD
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Data.dll.config
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Data.dll
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Data.pdb
@@ -50,3 +51,23 @@ D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.csproj
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.csproj.CopyComplete
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.dll
 D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.pdb
+=======
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Solution.Data.dll.config
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Solution.Data.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Solution.Data.pdb
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\EntityFramework.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Solution.Domain.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Solution.Domain.pdb
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Solution.Domain.dll.config
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\EntityFramework.xml
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Emna\Desktop\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Emna\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.csprojAssemblyReference.cache
+C:\Users\Emna\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.csproj.CopyComplete
+C:\Users\Emna\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.dll
+C:\Users\Emna\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.pdb
+>>>>>>> be63022a55e0ef72941c16ba8430b17475cc33bf
