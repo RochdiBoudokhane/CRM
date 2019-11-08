@@ -31,3 +31,22 @@ C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.csprojAssemblyRe
 C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.dll
 C:\Users\asus\Desktop\CRM\Solution.Data\obj\Debug\Solution.Data.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Data.dll.config
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Data.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Data.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\EntityFramework.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Domain.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Domain.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Solution.Domain.dll.config
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\EntityFramework.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.csprojAssemblyReference.cache
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.csproj.CoreCompileInputs.cache
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.csproj.CopyComplete
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Data\obj\Debug\Solution.Data.pdb

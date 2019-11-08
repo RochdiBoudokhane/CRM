@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClaimService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ForumService.cs" />
+    <Compile Include="IClaimService.cs" />
     <Compile Include="IForumService.cs" />
     <Compile Include="IPostService.cs" />
     <Compile Include="IUserService.cs" />

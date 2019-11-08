@@ -31,3 +31,20 @@ C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.csprojAsse
 C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.dll
 C:\Users\asus\Desktop\CRM\Solution.Service\obj\Debug\Solution.Service.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Service.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Service.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Service.Pattern.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Data.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Domain.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\EntityFramework.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Service.Pattern.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Data.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Data.dll.config
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Domain.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\Solution.Domain.dll.config
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\bin\Debug\EntityFramework.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.csprojAssemblyReference.cache
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.csproj.CoreCompileInputs.cache
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.csproj.CopyComplete
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Service\obj\Debug\Solution.Service.pdb

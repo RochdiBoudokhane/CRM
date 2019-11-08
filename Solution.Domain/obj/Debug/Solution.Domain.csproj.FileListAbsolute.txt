@@ -24,3 +24,19 @@ C:\Users\asus\Desktop\CRM\Solution.Domain\obj\Debug\Solution.Domain.csprojAssemb
 C:\Users\asus\Desktop\CRM\Solution.Domain\obj\Debug\Solution.Domain.csproj.CopyComplete
 C:\Users\asus\Desktop\CRM\Solution.Domain\obj\Debug\Solution.Domain.dll
 C:\Users\asus\Desktop\CRM\Solution.Domain\obj\Debug\Solution.Domain.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Solution.Domain.dll.config
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Solution.Domain.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Solution.Domain.pdb
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\EntityFramework.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\EntityFramework.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\obj\Debug\Solution.Domain.csprojAssemblyReference.cache
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\obj\Debug\Solution.Domain.csproj.CoreCompileInputs.cache
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\obj\Debug\Solution.Domain.csproj.CopyComplete
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\obj\Debug\Solution.Domain.dll
+D:\Doc\4eme\pi dev 1\template 3\CRM\Solution.Domain\obj\Debug\Solution.Domain.pdb

@@ -37,5 +37,7 @@ namespace Solution.Presentation.Models
         public System.Data.Entity.DbSet<Solution.Domain.Entities.Devis> Devis { get; set; }
 
         public System.Data.Entity.DbSet<Solution.Domain.Entities.Offer> Offers { get; set; }
+
+        public System.Data.Entity.DbSet<Solution.Presentation.Models.ClaimCRM> ClaimCRMs { get; set; }
     }
 }

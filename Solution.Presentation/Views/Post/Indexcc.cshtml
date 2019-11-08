@@ -1,0 +1,86 @@
+﻿@model Solution.Presentation.Models.PostCRM
+
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Replies</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">@Model.Title</a></li>
+                    <li class="breadcrumb-item active">@Model.Content</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.Replies.Any())
+{
+    <div class="wishlist-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+
+                                    <th>Content</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var reply in Model.Replies)
+                                {
+                                    <tr>
+     
+                                        <td class="desc-pr">
+                                            <p>
+                                                @reply.Content
+                                            </p>
+                                        </td>
+                                        <td class="quantity-box">
+                                        @reply.Created
+                                        </td>
+             
+                                        @*<td class="add-pr">
+                                            @Html.ActionLink("Edit", "Edit", new { id = post.PostId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = post.PostId })*@
+                                        <td class="add-pr">
+                                            <a class="btn hvr-hover" href="@Url.Action("Edit", "Post", new { id = reply.PostId })">Update Reply</a>
+                                        </td>
+                                        <td class="add-pr">
+                                            <a class="btn hvr-hover" href="@Url.Action("Delete", "Post", new { id = reply.PostId })">Delete Reply</a>
+                                        </td>
+                                        @*</td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <td class="add-pr">
+                            <a class="btn hvr-hover" href="@Url.Action("Create", "Post", new { ForumId = @Model.Forum.ForumId })">Create Reply</a>
+                        </td>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*else
+{
+    <div class="noReplies">
+        <h3>
+            It looks like there are no @Model.Title replies yet. <br />
+            Why not
+            <a href="@Url.Action("Create", "Post", new { ForumId = @Model.Forum.ForumId })">
+                create
+            </a>
+            one?
+        </h3>
+    </div>
+}*@

@@ -21,9 +21,9 @@ namespace Solution.Presentation.Controllers
             Service = new ForumService();
         }
         // GET: Post
-        public ActionResult Index(int ForumId)
+        public ActionResult Index(int id)
         {
-             var post = postService.GetById(ForumId);
+             var post = postService.GetById(id);
              var replies = BuildPostReplies(post.Replies);
 
              var model = new PostCRM
@@ -89,11 +89,11 @@ namespace Solution.Presentation.Controllers
         public ActionResult Create(NewPostModel model)
         {
             var post = BuildPost(model);
-            
+
             postService.Add(post);
             postService.Commit();
-            //return RedirectToAction("Index", "Post", post.PostId);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Post", new {id= post.PostId });
+            //return RedirectToAction("Index");
         }
 
         private Post BuildPost(NewPostModel model)
@@ -108,11 +108,11 @@ namespace Solution.Presentation.Controllers
             };
         }
         // GET: Post/Edit/5
-        public ActionResult Edit(int ForumId)
+        public ActionResult Edit(int PostId)
         {
             Post post = new Post();
             PostCRM p = new PostCRM();
-            post = postService.GetById(ForumId);
+            post = postService.GetById(PostId);
             p.Title = post.Title;
             p.Content = post.Content;
             return View(p);
@@ -120,16 +120,17 @@ namespace Solution.Presentation.Controllers
 
         // POST: Post/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, PostCRM postCRM )
+        public ActionResult Edit(int PostId, PostCRM postCRM )
         {
             Post post = new Post();
             PostCRM p = new PostCRM();
-            post = postService.GetById(id);
+            post = postService.GetById(PostId);
             p.Title = post.Title;
             p.Content = post.Content;
             postService.Update(post);
             postService.Commit();
             return RedirectToAction("Index");
+            //return View();
         }
 
         // GET: Post/Delete/5
@@ -166,13 +167,13 @@ namespace Solution.Presentation.Controllers
                 Id = postReply.Id,    
                 Content = postReply.Content,
                 Created = postReply.Created,
-             //   Post = BuildPostListing(postReply)
+               // Post = BuildPostListing(postReply)
                 
             });
             var model = new PostTopicModel
             {
                 PostReplies = postListings,
-             //   Post = BuildPostListing(postReply)
+                //Post = BuildPostListing(postReply)
 
             };
             return View(model);
