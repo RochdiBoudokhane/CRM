@@ -23,5 +23,9 @@ namespace Solution.Domain.Entities
 
         /* [ForeignKey("UserFK")]
          public virtual User User { get; set; }*/
+        public int allTimenbrReclamation()
+        {
+            return 2;
+        }
     }
 }
