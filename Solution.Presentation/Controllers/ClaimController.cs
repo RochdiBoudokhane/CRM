@@ -13,7 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
+using PagedList;
 using System.Web.Mvc;
+
+
 
 
 
@@ -30,11 +33,23 @@ namespace Solution.Presentation.Controllers
             Service = new ClaimService();
             postService = new PostService();
         }
+
+
+
+
+
+
+
+
+
         // GET: Claim
-        public ActionResult Index(String searchString)
+        public ActionResult Index(int? i)
         {
-            // return View();
+            
             var Claim = new List<ClaimCRM>();
+            //IEnumerable<Claim> Claim = ClaimService.GetMany();
+            IEnumerable<Claim> productDomain = Service.GetMany();
+            ViewBag.data = Claim;
             foreach (Claim ClaimA in Service.GetMany())
             {
                 Claim.Add(new ClaimCRM()
@@ -45,15 +60,213 @@ namespace Solution.Presentation.Controllers
                     Email = ClaimA.Email,
                     Name = ClaimA.Name,
                     ImageUrl = ClaimA.ImageUrl,
-                    
+
                     Type = ClaimA.Type,
                     State = ClaimA.State,
                     CreatedDate = ClaimA.CreatedDate
+                });
+            }
+            return View(Claim.ToPagedList(i ?? 1, 3));
+        }
+
+
+
+
+
+
+
+
+        //// GET: Claim
+        //public ActionResult Index(String searchString)
+        //{
+        //    // return View();
+        //    var Claim = new List<ClaimCRM>();
+        //    foreach (Claim ClaimA in Service.GetMany())
+        //    {
+        //        Claim.Add(new ClaimCRM()
+        //{
+        //    ClaimId = ClaimA.ClaimId,
+        //            Message = ClaimA.Message,
+        //            NumTel = ClaimA.NumTel,
+        //            Email = ClaimA.Email,
+        //            Name = ClaimA.Name,
+        //            ImageUrl = ClaimA.ImageUrl,
+
+        //            Type = ClaimA.Type,
+        //            State = ClaimA.State,
+        //            CreatedDate = ClaimA.CreatedDate
+        //        });
+
+        //    }
+        //    return View(Claim);
+        //}
+
+
+
+        // GET: Claim/State
+        public ActionResult Suivi(String searchString)
+        {
+            // return View();
+            var Claim = new List<ClaimCRM>();
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                Claim.Add(new ClaimCRM()
+                {
+                   
+                 
+                    State = ClaimA.State,
+                    CreatedDate = ClaimA.CreatedDate
+
                 });
 
             }
             return View(Claim);
         }
+
+        // GET: Claim/State
+        public ActionResult Stat(String searchString)
+        {
+            // return View();
+            var Claim = new List<ClaimCRM>();
+            ClaimCRM b = new ClaimCRM();
+            b.somme = allTimenbrReclamation();
+
+
+            Claim.Add(b);
+
+            
+            return View(Claim);
+        }
+
+        
+            
+        
+        public int allTimenbrReclamation()
+        {
+            int x = 0;
+
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                x = x + 1;
+            }
+            return x;
+        }
+        public int allTimnbrReclamationNontraité()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if (ClaimA.State == 0)
+                {
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+        public int allTimnbrReclamationEncours()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if (ClaimA.State == 1)
+                {
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+
+        public int allTimnbrReclamationtraité()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if (ClaimA.State == 2)
+                {
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+        public float allTimpourcentageTraité()
+        {
+            return allTimenbrReclamation() / allTimnbrReclamationtraité();
+        }
+        public float allTimpourcentageNonTraité()
+        {
+            return allTimenbrReclamation() / allTimnbrReclamationNontraité();
+        }
+        public float allTimpourcentageEnCours()
+        {
+            return allTimenbrReclamation() / allTimnbrReclamationEncours();
+        }
+
+        public int ceMoisnbrReclamation()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if ((ClaimA.CreatedDate.Year == (DateTime.Now.Year)) && (ClaimA.CreatedDate.Month == (DateTime.Now.Month))){
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+       
+        public int ceMoisnbrReclamationNontraité()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if ((ClaimA.CreatedDate.Year == (DateTime.Now.Year)) && (ClaimA.CreatedDate.Month == (DateTime.Now.Month) && (ClaimA.State == 0)))
+                {
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+        public int ceMoisnbrReclamationEncours()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if ((ClaimA.CreatedDate.Year == (DateTime.Now.Year)) && (ClaimA.CreatedDate.Month == (DateTime.Now.Month) && (ClaimA.State == 1)))
+                {
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+        public int ceMoisnbrReclamationtraité()
+        {
+            int x = 0;
+            foreach (Claim ClaimA in Service.GetMany())
+            {
+                if ((ClaimA.CreatedDate.Year == (DateTime.Now.Year)) && (ClaimA.CreatedDate.Month == (DateTime.Now.Month) && (ClaimA.State == 2)))
+                {
+                    x = x + 1;
+                }
+            }
+            return x;
+        }
+        public float ceMoispourcentageTraité()
+        {
+            return ceMoisnbrReclamation() / ceMoisnbrReclamationtraité();
+        }
+        public float ceMoisTimpourcentageNonTraité()
+        {
+            return ceMoisnbrReclamation() / ceMoisnbrReclamationNontraité();
+        }
+        public float ceMoisTimpourcentageEnCours()
+        {
+            return ceMoisnbrReclamation() / ceMoisnbrReclamationEncours();
+        }
+
+
+
+
+
+
 
         // GET: Claim/Details/5
         public ActionResult Details(int? id)
@@ -92,9 +305,10 @@ namespace Solution.Presentation.Controllers
                 Type = ClaimCRM.Type,
                 NumTel = ClaimCRM.NumTel,
                 Email = ClaimCRM.Email,
-                ImageUrl = ClaimCRM.ImageUrl,
+                ImageUrl = Path.GetFileName(file.FileName),
                 Message = ClaimCRM.Message,
                 CreatedDate = DateTime.Now,
+                State = ClaimCRM.State,
 
 
 
@@ -112,6 +326,49 @@ namespace Solution.Presentation.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
+
+
+
+            //try
+            //{
+            //    const string accountSid = "AC255e61580d73904b2a5e5a5e39c715f0";
+            //    const string authToken = "AUTH_TOKEN";
+            //    const string url = "https://api.twilio.com/2010-04-01/Accounts/" + accountSid + "/Messages.json";
+
+
+            //    TwilioRestClient client = new TwilioRestClient(accountSid, authToken);
+
+            //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //    var authInfo = accountSid + ":" + authToken;
+            //    authInfo = Convert.ToBase64String(Encoding.UTF8.GetBytes(authInfo));
+            //    request.Method = "POST";
+            //    var postData = "{\"To\":" + "\"" + sms.ToNumber + "\"" + ", \"From\":" + "\"" + fromNumTel + "\"" + ", \"Body\":" + "\"" + sms.Body + "\"}";
+
+            //    var data = Encoding.UTF8.GetBytes(postData);
+            //    request.ContentType = "application/x-www-form-urlencoded";
+            //    request.ContentLength = data.Length;
+            //    Stream writer = null;
+            //    writer = request.GetRequestStream();
+            //    writer.Write(data, 0, data.Length);
+            //    writer.Close();
+            //    request.Headers["Authorization"] = "Basic " + authInfo;
+            //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            //    StreamReader reader = new StreamReader(response.GetResponseStream());
+            //    string content = reader.ReadToEnd();
+            //    msg = client.SendMessage("+12012317746 ", sms.ToNumber, sms.Body);
+            //}
+            //catch (WebException ex)
+            //{
+            //    using (var stream = ex.Response.GetResponseStream())
+            //    using (var reader = new StreamReader(stream))
+            //    {
+            //        string err = reader.ReadToEnd();
+            //    }
+            //}
+
+
+
+
 
             Service.Add(ClaimAdd);
             Service.Commit();
@@ -138,9 +395,10 @@ namespace Solution.Presentation.Controllers
             c.Name = Claim.Name;
             c.Type = Claim.Type;
             c.Email = Claim.Email;
+            c.ImageUrl = Claim.ImageUrl;
             c.Message = Claim.Message;
-
-            c.CreatedDate = Claim.CreatedDate;
+            c.State = Claim.State;
+            //c.CreatedDate = Claim.CreatedDate;
             c.ClaimId = Claim.ClaimId;
 
             return View(c);
@@ -148,17 +406,24 @@ namespace Solution.Presentation.Controllers
 
         // POST: Claim/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ClaimCRM c)
+       
+        public ActionResult Edit(int id, ClaimCRM c, HttpPostedFileBase file)
         {
+            if (!ModelState.IsValid || file == null || file.ContentLength == 0)
+            {
+                RedirectToAction("Create");
+            }
             Claim Claim = new Claim();
             
             Claim = Service.GetById(id);
             Claim.Name = c.Name;
             Claim.Email = c.Email;
             Claim.Message = c.Message;
-
+            Claim.State = c.State;
+           
+            Claim.NumTel = c.NumTel;
             Claim.Type = c.Type;
-            Claim.CreatedDate = c.CreatedDate;
+            //Claim.CreatedDate = c.CreatedDate;
             
 
             Service.Update(Claim);
@@ -180,7 +445,7 @@ namespace Solution.Presentation.Controllers
             return View(c);
         }
 
-        // POST: Forum/Delete/5
+        // POST: Claim/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, ClaimCRM Claim)
